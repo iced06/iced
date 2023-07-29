@@ -12,3 +12,4 @@ ta
 termcolor
 mplfinance
 xlsxwriter
+tqdm

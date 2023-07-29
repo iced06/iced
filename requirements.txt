@@ -9,3 +9,5 @@ yfinance
 datetime
 seaborn
 ta
+termcolor
+mplfinance

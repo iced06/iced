@@ -13,3 +13,4 @@ termcolor
 mplfinance
 xlsxwriter
 tqdm
+dash_auth

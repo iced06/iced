@@ -3,3 +3,4 @@ plotly
 numpy
 scikit-learn
 Pandas
+gunicorn

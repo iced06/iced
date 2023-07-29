@@ -11,3 +11,4 @@ seaborn
 ta
 termcolor
 mplfinance
+xlswriter

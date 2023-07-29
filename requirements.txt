@@ -4,3 +4,6 @@ numpy
 scikit-learn
 Pandas
 gunicorn
+matplotlib
+yfinance
+datetime

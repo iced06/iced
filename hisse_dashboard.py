@@ -47,7 +47,7 @@ app =dash.Dash()
 # In[4]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
+server=app.server
 
 
 # In[5]:

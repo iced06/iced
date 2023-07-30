@@ -47,7 +47,13 @@ app =dash.Dash()
 # In[4]:
 
 
-server=app.server
+server = app.server
+
+
+# In[ ]:
+
+
+
 
 
 # In[5]:
@@ -179,16 +185,17 @@ for a in IMKB:
 # In[11]:
 
 
-app.layout=html.Div([
+app.layout=html.Div(["TEKNIK YUKSELISTE HISSELER",
     html.Div([
+        html.Label("Hisse Seçiniz"),
         dcc.Dropdown(id="Stocks",
                     options=[{"label":i,"value":i}for i in HisseAl],
                     value='Stocks')
-    ],style={"width":"48%","display":"inline-block"}),
+    ],style={"width":"48%"}),
     
     dcc.Graph(id="graph")
     
-],style={"padding":10})
+],style={"color":"blue","padding":10})
 
 
 # In[12]:

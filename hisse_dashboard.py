@@ -187,13 +187,14 @@ for a in IMKB:
 
 app.layout=html.Div(["TEKNIK YUKSELISTE HISSELER",
     html.Div([
-        html.Label("Hisse Seçiniz"),
+        html.P(html.Label("Hisse Seçiniz")),
+        html.Hr(),
         dcc.Dropdown(id="Stocks",
                     options=[{"label":i,"value":i}for i in HisseAl],
                     value='Stocks')
     ],style={"width":"48%"}),
     
-    dcc.Graph(id="graph")
+    dcc.Graph(id="graph",style={"width":"150vh","height":"70vh"})
     
 ],style={"color":"blue","padding":10})
 
@@ -265,25 +266,62 @@ def update_graph(Stock):
     Hisse["Return_pct_next_day"]=Hisse["Return_pct"].shift(-1)
     Hisse["Return_pct_next_day"].fillna(Hisse["Return_pct_next_day"].mean(),inplace=True)
     
-    fig = ms.make_subplots(rows=2,
+    fig2 = go.Figure(go.Indicator(
+    domain = {'x': [0, 1], 'y': [0, 1]},
+    value = Score1,
+    mode = "gauge+number+delta",
+    title = {'text': "Speed"},
+    delta = {'reference': 1},
+    gauge = {'axis': {'range': [None, 5]},
+             'steps' : [
+                 {'range': [0, 2], 'color': "lightgray"},
+                 {'range': [2, 5], 'color': "gray"}],
+             'threshold' : {'line': {'color': "red", 'width': 4}, 'thickness': 0.75, 'value': 1}}))
+
+    fig2.show()
+    
+    
+    fig = ms.make_subplots(rows=3,
     cols=1,
     shared_xaxes=True,
-    vertical_spacing=0.2)
+    vertical_spacing=0.05)
     
     fig.add_trace(go.Candlestick(x = Hisse.index,
                                 low = Hisse["Low"],
                                 high = Hisse["High"],
                                 close = Hisse["Close"],
-                                open = Hisse["Open"]),
+                                open = Hisse["Open"],
+                                name="Price"),
+                  
                                 row=1,
                                 col=1)
     
     
     fig.add_trace(go.Bar(x=Hisse.index,
-                        y=Hisse["Volume"]),
+                        y=Hisse["Volume"],
+                        name="Volume"),
                         row=2,
                         col=1)
-
+    
+    fig.add_trace(go.Scatter(x=Hisse.index,
+                        y=Hisse["MACD"],
+                        name="MACD"),
+                        row=3,
+                        col=1)
+    fig.add_trace(go.Scatter(x=Hisse.index,
+                        y=Hisse["MACDS"],
+                        mode="lines+markers",
+                        name="MACDS"),
+                        row=3,
+                        col=1)
+    fig.update_layout(title = "Interactive CandleStick & Volume Chart",
+    yaxis1_title = "Stock Price ($)",
+    yaxis2_title = "Volume (M)",
+    yaxis3_title = "MACD Value",                  
+    xaxis3_title = "Time",
+    xaxis1_rangeslider_visible = False,
+    )
+    
     return fig
 
       

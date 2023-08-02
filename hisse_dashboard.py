@@ -281,7 +281,7 @@ def update_graph(Stock):
     fig2.show()
     
     
-    fig = ms.make_subplots(rows=3,
+    fig = ms.make_subplots(rows=4,
     cols=1,
     shared_xaxes=True,
     vertical_spacing=0.05)
@@ -314,11 +314,19 @@ def update_graph(Stock):
                         name="MACDS"),
                         row=3,
                         col=1)
+    fig.add_trace(go.Scatter(x=Hisse.index,
+                        y=Hisse["OBV"],
+                        name="OBV"),
+                        row=4,
+                        col=1)
+    
+    
     fig.update_layout(title = "Interactive CandleStick & Volume Chart",
     yaxis1_title = "Stock Price ($)",
     yaxis2_title = "Volume (M)",
-    yaxis3_title = "MACD Value",                  
-    xaxis3_title = "Time",
+    yaxis3_title = "MACD Value",   
+    yaxis4_title = "OBV",                  
+    xaxis4_title = "Time",
     xaxis1_rangeslider_visible = False,
     )
     

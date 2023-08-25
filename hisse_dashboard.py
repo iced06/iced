@@ -175,9 +175,10 @@ for a in IMKB:
     Hisse["Buy_CMFS"]=np.where((Hisse["Buy_CMF"]>Hisse["Buy_CMF"].shift(1)),1,0)
     HisseDeger=Hisse.tail(1).squeeze()
     f=(HisseDeger["Vol_diff"]/HisseDeger["Volume"]+HisseDeger["Volume"]/Hisse["Volume"].mean())/2
-    Score1=HisseDeger["Buy_MACDS"]+HisseDeger["Buy_AOS"]+HisseDeger["Buy_EMA10_EMA30S"]+HisseDeger["Buy_SMA5S"]+HisseDeger["Buy_SMA22S"]+HisseDeger["Buy_RSIS"]+HisseDeger["Stochastic_BuyS"]+HisseDeger["Buy_CCIS"]+HisseDeger["Buy_KAMAS"]+HisseDeger["Buy_CMFS"]+f
-    print(a,Score1)
-    if Score1>2.5:
+    Score1=HisseDeger["Buy_MACDS"]+HisseDeger["Buy_AOS"]+HisseDeger["Buy_EMA10_EMA30S"]+HisseDeger["Buy_SMA5S"]+HisseDeger["Buy_SMA22S"]+HisseDeger["Buy_RSIS"]+HisseDeger["Stochastic_BuyS"]+HisseDeger["Buy_CCIS"]+HisseDeger["Buy_KAMAS"]+HisseDeger["Buy_CMFS"]
+    Score2=f
+    print(a,Score1,Score2)
+    if Score1>=2 and Score2 >1:
         HisseAl.append(a)
        
 

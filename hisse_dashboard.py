@@ -96,7 +96,7 @@ IMKBListe={"DOHOL.IS":"Holding","EGSER.IS":"Bina Malzemeleri","ERBOS.IS":"Bina M
           "AYCES.IS":"Turizm","MAALT.IS":"Turizm","PKENT.IS":"Turizm","PGSUS.IS":"Ulastirma","THYAO.IS":"Ulastirma","ALGYO.IS":"Gayrimenkul",
           "EKGYO.IS":"Gayrimenkul","OZKGY.IS":"Gayrimenkul","BNTAS.IS":"Diger","DGNMO.IS":"Diger","MAVI.IS":"Diger","ORGE.IS":"Diger",
            "VAKKO.IS":"Diger","LKMNH.IS":"Saglık","BEYAZ.IS":"Diger","MEGAP.IS":"Kimya","METUR.IS":"Turizm",
-          "PARSN.IS":"Otomotiv","LIDFA.IS":"Factoring"}
+          "PARSN.IS":"Otomotiv","LIDFA.IS":"Factoring","TMSN.IS":"Otomotiv","ISCTR.IS":"Finans"}
 
 
 # In[8]:
@@ -195,16 +195,17 @@ app.layout=html.Div(["TEKNIK YUKSELISTE HISSELER",
                     value='Stocks')
     ],style={"width":"48%"}),
     
-    dcc.Graph(id="graph",style={"width":"150vh","height":"70vh"})
-    
-],style={"color":"blue","padding":10})
+    dcc.Graph(id="graph",style={"width":"100vh","height":"30vh"}),
+    dcc.Graph(id="graph2",style={"width":"150vh","height":"60vh"})
+])
 
 
 # In[12]:
 
 
 @app.callback(
-    Output("graph","figure"),
+    [Output("graph","figure"),
+    Output("graph2","figure")],
     [Input("Stocks","value")])
 def update_graph(Stock):
     Hisse=yf.download(Stock,
@@ -266,28 +267,44 @@ def update_graph(Stock):
     Hisse["Target_Close_Next_3Day"].fillna(1,inplace=True)
     Hisse["Return_pct_next_day"]=Hisse["Return_pct"].shift(-1)
     Hisse["Return_pct_next_day"].fillna(Hisse["Return_pct_next_day"].mean(),inplace=True)
+    HisseDeger=Hisse.tail(1).squeeze()
+    f=(HisseDeger["Vol_diff"]/HisseDeger["Volume"]+HisseDeger["Volume"]/Hisse["Volume"].mean())/2
+    Score1=HisseDeger["Buy_MACDS"]+HisseDeger["Buy_AOS"]+HisseDeger["Buy_EMA10_EMA30S"]+HisseDeger["Buy_SMA5S"]+HisseDeger["Buy_SMA22S"]+HisseDeger["Buy_RSIS"]+HisseDeger["Stochastic_BuyS"]+HisseDeger["Buy_CCIS"]+HisseDeger["Buy_KAMAS"]+HisseDeger["Buy_CMFS"]
+    Score2=f
+           
+    fig=ms.make_subplots(rows=1,
+    cols=2,
+    specs=[[{'type' : 'indicator'}, {'type' : 'indicator'}]]                     )
+    fig.add_trace(go.Indicator(
+                    mode = "gauge+number",
+                    gauge = {'axis': {'range': [None, 5]},
+                     'steps' : [
+                             {'range': [0, 2], 'color': "lightgray"},
+                             {'range': [2, 4], 'color': "gray"}],
+                             'threshold' : {'line': {'color': "red", 'width': 4}, 'thickness': 0.75, 'value': 2}},        
+                    value = Score1,
+                    domain = {'row' : 1, 'column' : 1},
+                    title = {'text': "Indıcator Score"}),
+                    row=1,col=1)
     
-    fig2 = go.Figure(go.Indicator(
-    domain = {'x': [0, 1], 'y': [0, 1]},
-    value = Score1,
-    mode = "gauge+number+delta",
-    title = {'text': "Speed"},
-    delta = {'reference': 1},
-    gauge = {'axis': {'range': [None, 5]},
-             'steps' : [
-                 {'range': [0, 2], 'color': "lightgray"},
-                 {'range': [2, 5], 'color': "gray"}],
-             'threshold' : {'line': {'color': "red", 'width': 4}, 'thickness': 0.75, 'value': 1}}))
-
-    fig2.show()
+    fig.add_trace(go.Indicator(
+                    mode = "gauge+number",
+                    gauge = {'axis': {'range': [None, 5]},
+                     'steps' : [
+                             {'range': [0, 2], 'color': "lightgray"},
+                             {'range': [2, 4], 'color': "gray"}],
+                             'threshold' : {'line': {'color': "red", 'width': 4}, 'thickness': 0.75, 'value': 1}},        
+                    value = Score2,
+                    domain = {'row' : 1, 'column' : 2},
+                    title = {'text': "Volume Score"}),
+                    row=1,col=2)
     
-    
-    fig = ms.make_subplots(rows=4,
+    fig2 = ms.make_subplots(rows=4,
     cols=1,
     shared_xaxes=True,
     vertical_spacing=0.05)
     
-    fig.add_trace(go.Candlestick(x = Hisse.index,
+    fig2.add_trace(go.Candlestick(x = Hisse.index,
                                 low = Hisse["Low"],
                                 high = Hisse["High"],
                                 close = Hisse["Close"],
@@ -298,31 +315,33 @@ def update_graph(Stock):
                                 col=1)
     
     
-    fig.add_trace(go.Bar(x=Hisse.index,
+    fig2.add_trace(go.Bar(x=Hisse.index,
                         y=Hisse["Volume"],
                         name="Volume"),
                         row=2,
                         col=1)
     
-    fig.add_trace(go.Scatter(x=Hisse.index,
+    fig2.add_trace(go.Scatter(x=Hisse.index,
                         y=Hisse["MACD"],
                         name="MACD"),
                         row=3,
                         col=1)
-    fig.add_trace(go.Scatter(x=Hisse.index,
+    fig2.add_trace(go.Scatter(x=Hisse.index,
                         y=Hisse["MACDS"],
                         mode="lines+markers",
                         name="MACDS"),
                         row=3,
                         col=1)
-    fig.add_trace(go.Scatter(x=Hisse.index,
+    fig2.add_trace(go.Scatter(x=Hisse.index,
                         y=Hisse["OBV"],
                         name="OBV"),
                         row=4,
                         col=1)
     
+      
     
-    fig.update_layout(title = "Interactive CandleStick & Volume Chart",
+    
+    fig2.update_layout(title = "Interactive CandleStick & Volume Chart",
     yaxis1_title = "Stock Price ($)",
     yaxis2_title = "Volume (M)",
     yaxis3_title = "MACD Value",   
@@ -330,9 +349,8 @@ def update_graph(Stock):
     xaxis4_title = "Time",
     xaxis1_rangeslider_visible = False,
     )
-    
-    return fig
-
+   
+    return fig,fig2
       
 
 

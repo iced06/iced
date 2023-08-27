@@ -178,7 +178,7 @@ for a in IMKB:
     Score1=HisseDeger["Buy_MACDS"]+HisseDeger["Buy_AOS"]+HisseDeger["Buy_EMA10_EMA30S"]+HisseDeger["Buy_SMA5S"]+HisseDeger["Buy_SMA22S"]+HisseDeger["Buy_RSIS"]+HisseDeger["Stochastic_BuyS"]+HisseDeger["Buy_CCIS"]+HisseDeger["Buy_KAMAS"]+HisseDeger["Buy_CMFS"]
     Score2=f
     print(a,Score1,Score2)
-    if Score1>=2 and Score2 >1:
+    if Score1>=2 and Score2 >0.8:
         HisseAl.append(a)
        
 

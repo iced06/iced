@@ -78,33 +78,50 @@ print("Today's date:", today)
 # In[7]:
 
 
-IMKBListe={"DOHOL.IS":"Holding","EGSER.IS":"Bina Malzemeleri","ERBOS.IS":"Bina Malzemleri","SISE.IS":"Bina Malzemeleri",
-           "USAK.IS":"Bina Malzemeleri","ALCAR.IS":"Bina Malzemeleri","BRSAN.IS":"Bina Malzemeleri","CUSAN.IS":"Bina Malzemeleri",
-           "DOGUB.IS":"Bina Malzemeleri","KLKIM.IS":"Bina Malzemeleri","KLMSN.IS":"Bina Malzemeleri","SAFKR.IS":"Bina Malzemeleri",
-           "SISE.IS":"Bina Malzemeleri","ENJSA.IS":"Enerji","GWIND.IS":"Enerji","ODAS.IS":"Enerji","BUCIM.IS":"Çimento","CIMSA.IS":"Çimento",
-           "OYAKC.IS":"Çimento","GOLTS.IS":"Çimento","NUHCM.IS":"Çimento","ARCLK.IS":"Beyaz Eşya","VESBE.IS":"Beyaz Eşya","EREGL.IS":"Demir Çelik",
-           "KRDMD.IS":"Demir Çelik","TUCLK.IS":"Demir Çelik","YKSLN.IS":"Demir Çelik","AYEN.IS":"Enerji","FRIGO.IS":"Gıda",
-           "PETUN.IS":"Gıda","TUKAS.IS":"Gıda","YYLGD.IS":"Gıda","AEFES.IS":"Gıda","CCOLA.IS":"Gıda","EKIZ.IS":"Gıda","KERVT.IS":"Gıda",
-           "KNFRT.IS":"Gıda","MERKO.IS":"Gıda","PENGD.IS":"Gıda","TATGD.IS":"Gıda","ALARK.IS":"Holding","BRYAT.IS":"Holding","DOHOL.IS":"Holding",
-           "GSDHO.IS":"Holding","KCHOL.IS":"Holding","SAHOL.IS":"Holding","TKFEN.IS":"Holding","AGHOL.IS":"Holding","ALKA.IS":"Kağıt",
-           "BAKAB.IS":"Kağıt","KARTN.IS":"Kağıt","MNDTR.IS":"Kağıt","TCELL.IS":"Mobil","DOAS.IS":"Otomotiv",
-           "FROTO.IS":"Otomotiv","OTKAR.IS":"Otomotiv","TOASO.IS":"Otomotiv","TTRAK.IS":"Otomotiv","CEMAS.IS":"Oto Malz","BRISA.IS":"Oto Malz",
-           "CELHA.IS":"Oto Malz","CEMTS.IS":"Oto Malz","DITAS.IS":"Oto Malz","GOODY.IS":"Oto Malz","JANTS.IS":"Oto Malz","AKSA.IS":"Kimya",
-           "ALKIM.IS":"Kimya","DYOBY.IS":"Kimya","EGPRO.IS":"Kimya","KORDS.IS":"Kimya","BOSSA.IS":"Tekstil","DAGI.IS":"Tekstil","DERIM.IS":"Tekstil",
-           "DESA.IS":"Tekstil","KRTEK.IS":"Tekstil","MNDRS.IS":"Tekstil","YATAS.IS":"Tekstil","YUNSA.IS":"Tekstil","ALCTL.IS":"Teknoloji",
-          "DGATE.IS":"Teknoloji","DESPC.IS":"Tekstil","FONET.IS":"Teknoloji","INDES.IS":"Teknoloji","LINK.IS":"Teknoloji","TKNSA.IS":"Teknoloji",
-          "AYCES.IS":"Turizm","MAALT.IS":"Turizm","PKENT.IS":"Turizm","PGSUS.IS":"Ulastirma","THYAO.IS":"Ulastirma","ALGYO.IS":"Gayrimenkul",
-          "EKGYO.IS":"Gayrimenkul","OZKGY.IS":"Gayrimenkul","BNTAS.IS":"Diger","DGNMO.IS":"Diger","MAVI.IS":"Diger","ORGE.IS":"Diger",
-           "VAKKO.IS":"Diger","LKMNH.IS":"Saglık","BEYAZ.IS":"Diger","MEGAP.IS":"Kimya","METUR.IS":"Turizm",
-          "PARSN.IS":"Otomotiv","LIDFA.IS":"Factoring","TMSN.IS":"Otomotiv","ISCTR.IS":"Finans"}
-
+IMKB=["AKBNK.IS","ALBRK.IS","QNBFB.IS","GARAN.IS","HALKB.IS","ISCTR.IS","SKBNK.IS","TSKB.IS","ICBCT.IS","KLNMA.IS",
+            "VAKBN.IS","YKBNK.IS","AKGRT.IS","ANHYT.IS","ANSGR.IS","AGESA.IS","TURSG.IS","RAYSG.IS","CRDFA.IS","QNBFL.IS","GARFA.IS","ISFIN.IS",
+        "LIDFA.IS","SEKFK.IS","ULUFA.IS","VAKFN.IS","A1CAP.IS","GEDIK.IS","GLBMD.IS","INFO.IS","ISMEN.IS","OSMEN.IS",
+        "OYYAT.IS","TERA.IS","ALMAD.IS","CVKMD.IS","IPEKE.IS","KOZAL.IS","KOZAA.IS","PRKME.IS","ALCAR.IS","BIENY.IS","BRSAN.IS","CUSAN.IS",
+            "DNISI.IS","DOGUB.IS","EGSER.IS","ERBOS.IS","QUAGR.IS","INTEM.IS","KLKIM.IS","KLSER.IS","KLMSN.IS","KUTPO.IS",
+            "PNLSN.IS","SAFKR.IS","ERCB.IS","SISE.IS","USAK.IS","YYAPI.IS","AFYON.IS","AKCNS.IS","BTCIM.IS","BSOKE.IS",
+            "BOBET.IS","BUCIM.IS","CMBTN.IS","CMENT.IS","CIMSA.IS","GOLTS.IS","KONYA.IS","OYAKC.IS","NIBAS.IS","NUHCM.IS",
+            "ARCLK.IS","ARZUM.IS","SILVR.IS","VESBE.IS","VESTL.IS","BMSCH.IS","BMSTL.IS","EREGL.IS","IZMDC.IS","KCAER.IS",
+            "KRDMA.IS","KRDMB.IS","KRDMD.IS","TUCLK.IS","YKSLN.IS","AHGAZ.IS","AKENR.IS","AKFYE.IS","AKSEN.IS","AKSUE.IS","ALFAS.IS","ASTOR.IS","ARASE.IS","AYDEM.IS","AYEN.IS",
+        "BASGZ.IS","BIOEN.IS","CONSE.IS","CWENE.IS","CANTE.IS","EMKEL.IS","ENJSA.IS","ENERY.IS","ESEN.IS","GWIND.IS",
+        "GEREL.IS","HUNER.IS","IZENR.IS","KARYE.IS","NATEN.IS","NTGAZ.IS","MAGEN.IS","ODAS.IS","SMRTG.IS","TATEN.IS",
+        "ZEDUR.IS","ZOREN.IS","ATAKP.IS","AVOD.IS","AEFES.IS","BANVT.IS","BYDNR.IS","BIGCH.IS","CCOLA.IS","DARDL.IS","EKIZ.IS","EKSUN.IS","ELITE.IS",
+      "ERSU.IS","FADE.IS","FRIGO.IS","GOKNR.IS","KAYSE.IS","KENT.IS","KERVT.IS","KNFRT.IS","KRSTL.IS","KRVGD.IS","KTSKR.IS",
+      "MERKO.IS","OFSYM.IS","ORCAY.IS","OYLUM.IS","PENGD.IS","PETUN.IS","PINSU.IS","PNSUT.IS","SELGD.IS","SELVA.IS","SOKE.IS",
+      "TBORG.IS","TATGD.IS","TUKAS.IS","ULKER.IS","ULUUN.IS","YYLGD.IS","BIMAS.IS","KIMMR.IS","GMTAS.IS","SOKM.IS","BIZIM.IS","CRFSA.IS","MGROS.IS","AKYHO.IS","ALARK.IS","MARKA.IS","ATSYH.IS","BRYAT.IS","COSMO.IS","DAGHL.IS","DOHOL.IS","DERHL.IS","ECZYT.IS",
+         "ENKAI.IS","EUHOL.IS","GLYHO.IS","GLRYH.IS","GSDHO.IS","HEDEF.IS","IEYHO.IS","IHLAS.IS",
+         "INVES.IS","KERVN.IS","KLRHO.IS","KCHOL.IS","BERA.IS","MZHLD.IS","MMCAS.IS","METRO.IS","NTHOL.IS","OSTIM.IS",
+         "POLHO.IS","RALYH.IS","SAHOL.IS","TAVHL.IS","TKFEN.IS","UFUK.IS","VERUS.IS","AGHOL.IS","YESIL.IS","UNLU.IS","ADESE.IS","AKFGY.IS","AKMGY.IS","AKSGY.IS","ALGYO.IS","ASGYO.IS","ATAGY.IS","AGYO.IS","AVGYO.IS","DAPGM.IS",
+     "DZGYO.IS","DGGYO.IS","EDIP.IS","EYGYO.IS","EKGYO.IS","FZLGY.IS","HLGYO.IS","IDGYO.IS","IHLGM.IS","ISGYO.IS",
+     "KZBGY.IS","KLGYO.IS","KRGYO.IS","KUYAS.IS","MSGYO.IS","NUGYO.IS","OZKGY.IS","OZGYO.IS","PAGYO.IS","PSGYO.IS",
+     "PEGYO.IS","PEKGY.IS","RYGYO.IS","SEGYO.IS","SRVGY.IS","SNGYO.IS","TRGYO.IS","TDGYO.IS","TSGYO.IS","TURGG.IS",
+     "VKGYO.IS","YGGYO.IS","YGYO.IS","ZRGYO.IS","ALCTL.IS","ARDYZ.IS","ARENA.IS","INGRM.IS","ASELS.IS","ATATP.IS","AZTEK.IS","DGATE.IS","DESPC.IS","EDATA.IS",
+         "FORTE.IS","HTTBT.IS","KFEIN.IS","SDTTR.IS","SMART.IS","ESCOM.IS","FONET.IS","INDES.IS","KAREL.IS","KRONT.IS",
+         "LINK.IS","LOGO.IS","MANAS.IS","MTRKS.IS","MIATK.IS","MOBTL.IS","NETAS.IS","OBASE.IS","PENTA.IS","TKNSA.IS",
+         "VBTYZ.IS","ARSAN.IS","BLCYT.IS","BRKO.IS","BRMEN.IS","BOSSA.IS","DAGI.IS","DERIM.IS","DESA.IS","DIRIT.IS",
+         "EBEBK.IS","ENSRI.IS","HATEK.IS","ISSEN.IS","KRTEK.IS","LUKSK.IS","MNDRS.IS","RUBNS.IS","SKTAS.IS",
+         "SNPAM.IS","SUNTK.IS","YATAS.IS","YUNSA.IS","ADEL.IS","ANGEN.IS","ANELE.IS","BNTAS.IS","BRKVY.IS","BRLSM.IS","BURCE.IS","BURVA.IS","BVSAN.IS","CEOEM.IS",
+       "DGNMO.IS","EMNIS.IS","EUPWR.IS","ESCAR.IS","FORMT.IS","FLAP.IS","GESAN.IS","GLCVY.IS","GENTS.IS","GRTRK.IS",
+       "HKTM.IS","IHEVA.IS","IHAAS.IS","IMASM.IS","KTLEV.IS","KLSYN.IS","KONTR.IS","MACKO.IS","MAVI.IS","MAKIM.IS",
+       "MAKTK.IS","MEPET.IS","MIPAZ.IS","ORGE.IS","PARSN.IS","TGSAS.IS","PRKAB.IS","PAPIL.IS","PCILT.IS","PKART.IS",
+       "PSDTC.IS","SANEL.IS","SNICA.IS","SANKO.IS","SARKY.IS","SNKRN.IS","KUVVA.IS","OZSUB.IS","SONME.IS","SUMAS.IS",
+       "SUWEN.IS","TLMAN.IS","ULUSE.IS","VAKKO.IS","YAPRK.IS","YAYLA.IS","YEOTK.IS","AVHOL.IS","BEYAZ.IS","DENGE.IS",
+       "IZFAS.IS","IZINV.IS","MEGAP.IS","OZRDN.IS","PASEU.IS","PAMEL.IS","POLTK.IS","RODRG.IS","ASUZU.IS","DOAS.IS","FROTO.IS","KARSN.IS","OTKAR.IS","TOASO.IS","TMSN.IS","TTRAK.IS","BFREN.IS","BRISA.IS",
+          "CELHA.IS","CEMAS.IS","CEMTS.IS","DOKTA.IS","DMSAS.IS","DITAS.IS","EGEEN.IS","FMIZP.IS","GOODY.IS","JANTS.IS",
+          "KATMR.IS","AYGAZ.IS","CASA.IS","TUPRS.IS","TRCAS.IS","ACSEL.IS","AKSA.IS","ALKIM.IS","BAGFS.IS","BAYRK.IS","BRKSN.IS",
+       "DYOBY.IS","EGGUB.IS","EGPRO.IS","EPLAS.IS","EUREN.IS","GUBRF.IS","HEKTS.IS","ISKPL.IS","KMPUR.IS","KOPOL.IS",
+       "KORDS.IS","KRPLS.IS","MRSHL.IS","MERCN.IS","PETKM.IS","RNPOL.IS","SANFM.IS","SASA.IS","TARKM.IS","ALKA.IS","BAKAB.IS","BARMA.IS","DURDO.IS","GEDZA.IS","GIPTA.IS","KAPLM.IS","KARTN.IS","KONKA.IS","MNDTR.IS",
+         "PRZMA.IS","SAMAT.IS","TEZOL.IS","VKING.IS","HUBVC.IS","GOZDE.IS","HDFGS.IS","ISGSY.IS","PRDGS.IS",
+         "VERTU.IS","DOBUR.IS","HURGZ.IS","IHGZT.IS","IHYAY.IS","AYCES.IS","AVTUR.IS","ETILR.IS","MAALT.IS","METUR.IS","PKENT.IS","TEKTU.IS","ULAS.IS","CLEBI.IS","GSDDE.IS",
+           "GRSEL.IS","GZNMI.IS","PGSUS.IS","PLTUR.IS","RYSAS.IS","LIDER.IS","TUREX.IS","THYAO.IS","TCELL.IS","TTKOM.IS","DEVA.IS","ECILC.IS","GENIL.IS","LKMNH.IS","MEDTR.IS","MPARK.IS","EGEPO.IS","ONCSM.IS","RTALB.IS","SELEC.IS",
+      "TNZTP.IS","TRILC.IS","ATLAS.IS","MTRYO.IS","EUKYO.IS","ETYAT.IS","EUYO.IS","GRNYO.IS","ISYAT.IS","OYAYO.IS",
+      "VKFYO.IS"]
 
 # In[8]:
-
-
-IMKB=IMKBListe.keys()
-IMKB
-
 
 # In[9]:
 
@@ -116,13 +133,12 @@ for i in IMKB:
 
 # In[10]:
 
-
 HisseAl=[]
 q=0
 for a in IMKB:
     q+=1
     Hisse=yf.download(a,
-                     start="2021-01-01",
+                     start="2023-01-01",
                      end=today,
                      progress=False)
     Hisse.index=pd.to_datetime(Hisse.index)
@@ -137,8 +153,12 @@ for a in IMKB:
     Hisse["bb_bbl"]=indicator_bb.bollinger_lband()
     Hisse["MACD"] = ta.trend.macd(Hisse["Close"], window_slow = 26, window_fast= 12, fillna=False)
     Hisse["MACDS"] = ta.trend.macd_signal(Hisse["Close"], window_sign= 9, fillna=False)
+    Hisse["Diff"]=Hisse["MACD"]-Hisse["MACDS"]
     Hisse["Buy_MACD"]=np.where((Hisse["MACD"]>Hisse["MACDS"]),1,0)
     Hisse["Buy_MACDS"]=np.where((Hisse["Buy_MACD"]>Hisse["Buy_MACD"].shift(1)),1,0)
+    Hisse["Buy_MACDS2"]=np.where((Hisse["Diff"]>0) & (Hisse["Buy_MACDS"]==1),2,Hisse["Buy_MACDS"])
+    Hisse['VSMA15'] = ta.trend.sma_indicator(Hisse['Volume'], window=15)
+    
     Hisse['OBV'] = ta.volume.on_balance_volume(Hisse['Close'], Hisse['Volume'])
     Hisse["RSI"]=ta.momentum.rsi(Hisse["Close"],window= 14, fillna= False)
     Hisse["Buy_RSI"]=np.where((Hisse["RSI"]>30),1,0)
@@ -174,11 +194,11 @@ for a in IMKB:
     Hisse["Buy_CMF"]=np.where((Hisse["CMF"]>0),1,0)
     Hisse["Buy_CMFS"]=np.where((Hisse["Buy_CMF"]>Hisse["Buy_CMF"].shift(1)),1,0)
     HisseDeger=Hisse.tail(1).squeeze()
-    f=(HisseDeger["Vol_diff"]/HisseDeger["Volume"]+HisseDeger["Volume"]/Hisse["Volume"].mean())/2
-    Score1=HisseDeger["Buy_MACDS"]+HisseDeger["Buy_AOS"]+HisseDeger["Buy_EMA10_EMA30S"]+HisseDeger["Buy_SMA5S"]+HisseDeger["Buy_SMA22S"]+HisseDeger["Buy_RSIS"]+HisseDeger["Stochastic_BuyS"]+HisseDeger["Buy_CCIS"]+HisseDeger["Buy_KAMAS"]+HisseDeger["Buy_CMFS"]
+    f=(HisseDeger["Volume"]/HisseDeger["VSMA15"])
+    Score1=HisseDeger["Buy_MACDS2"]+HisseDeger["Buy_AOS"]+HisseDeger["Buy_SMA5S"]+HisseDeger["Buy_SMA22S"]+HisseDeger["Buy_RSIS"]+HisseDeger["Stochastic_BuyS"]+HisseDeger["Buy_CCIS"]+HisseDeger["Buy_KAMAS"]+HisseDeger["Buy_CMFS"]
     Score2=f
     print(a,Score1,Score2)
-    if Score1>=2 and Score2 >0.8:
+    if Score1>=3 and Score2 >0.75:
         HisseAl.append(a)
        
 
@@ -202,14 +222,13 @@ app.layout=html.Div(["TEKNIK YUKSELISTE HISSELER",
 
 # In[12]:
 
-
 @app.callback(
     [Output("graph","figure"),
     Output("graph2","figure")],
     [Input("Stocks","value")])
 def update_graph(Stock):
     Hisse=yf.download(Stock,
-                     start="2021-01-01",
+                     start="2023-01-01",
                      end=today,
                      progress=False)
     Hisse.index=pd.to_datetime(Hisse.index)
@@ -224,8 +243,12 @@ def update_graph(Stock):
     Hisse["bb_bbl"]=indicator_bb.bollinger_lband()
     Hisse["MACD"] = ta.trend.macd(Hisse["Close"], window_slow = 26, window_fast= 12, fillna=False)
     Hisse["MACDS"] = ta.trend.macd_signal(Hisse["Close"], window_sign= 9, fillna=False)
+    Hisse["Diff"]=Hisse["MACD"]-Hisse["MACDS"]
     Hisse["Buy_MACD"]=np.where((Hisse["MACD"]>Hisse["MACDS"]),1,0)
     Hisse["Buy_MACDS"]=np.where((Hisse["Buy_MACD"]>Hisse["Buy_MACD"].shift(1)),1,0)
+    Hisse["Buy_MACDS2"]=np.where((Hisse["Diff"]>0) & (Hisse["Buy_MACDS"]==1),2,Hisse["Buy_MACDS"])
+    Hisse['VSMA15'] = ta.trend.sma_indicator(Hisse['Volume'], window=15)
+    
     Hisse['OBV'] = ta.volume.on_balance_volume(Hisse['Close'], Hisse['Volume'])
     Hisse["RSI"]=ta.momentum.rsi(Hisse["Close"],window= 14, fillna= False)
     Hisse["Buy_RSI"]=np.where((Hisse["RSI"]>30),1,0)
@@ -268,10 +291,11 @@ def update_graph(Stock):
     Hisse["Return_pct_next_day"]=Hisse["Return_pct"].shift(-1)
     Hisse["Return_pct_next_day"].fillna(Hisse["Return_pct_next_day"].mean(),inplace=True)
     HisseDeger=Hisse.tail(1).squeeze()
-    f=(HisseDeger["Vol_diff"]/HisseDeger["Volume"]+HisseDeger["Volume"]/Hisse["Volume"].mean())/2
-    Score1=HisseDeger["Buy_MACDS"]+HisseDeger["Buy_AOS"]+HisseDeger["Buy_EMA10_EMA30S"]+HisseDeger["Buy_SMA5S"]+HisseDeger["Buy_SMA22S"]+HisseDeger["Buy_RSIS"]+HisseDeger["Stochastic_BuyS"]+HisseDeger["Buy_CCIS"]+HisseDeger["Buy_KAMAS"]+HisseDeger["Buy_CMFS"]
+    f=(HisseDeger["Volume"]/HisseDeger["VSMA15"])
+    Score1=HisseDeger["Buy_MACDS2"]+HisseDeger["Buy_AOS"]+HisseDeger["Buy_EMA10_EMA30S"]+HisseDeger["Buy_SMA5S"]+HisseDeger["Buy_SMA22S"]+HisseDeger["Buy_RSIS"]+HisseDeger["Stochastic_BuyS"]+HisseDeger["Buy_CCIS"]+HisseDeger["Buy_KAMAS"]+HisseDeger["Buy_CMFS"]
     Score2=f
-           
+  
+    
     fig=ms.make_subplots(rows=1,
     cols=2,
     specs=[[{'type' : 'indicator'}, {'type' : 'indicator'}]]                     )
@@ -293,13 +317,13 @@ def update_graph(Stock):
                      'steps' : [
                              {'range': [0, 2], 'color': "lightgray"},
                              {'range': [2, 4], 'color': "gray"}],
-                             'threshold' : {'line': {'color': "red", 'width': 4}, 'thickness': 0.75, 'value': 1}},        
+                             'threshold' : {'line': {'color': "red", 'width': 4}, 'thickness': 0.75, 'value': 1.25}},        
                     value = Score2,
                     domain = {'row' : 1, 'column' : 2},
                     title = {'text': "Volume Score"}),
                     row=1,col=2)
     
-    fig2 = ms.make_subplots(rows=4,
+    fig2 = ms.make_subplots(rows=5,
     cols=1,
     shared_xaxes=True,
     vertical_spacing=0.05)
@@ -332,25 +356,32 @@ def update_graph(Stock):
                         name="MACDS"),
                         row=3,
                         col=1)
+    fig2.add_trace(go.Bar(x=Hisse.index,
+                        y=Hisse["Diff"],
+                        name="MacdDiff"),
+                        row=4,
+                        col=1)
+
     fig2.add_trace(go.Scatter(x=Hisse.index,
                         y=Hisse["OBV"],
                         name="OBV"),
-                        row=4,
+                        row=5,
                         col=1)
     
-      
     
     
     fig2.update_layout(title = "Interactive CandleStick & Volume Chart",
     yaxis1_title = "Stock Price ($)",
     yaxis2_title = "Volume (M)",
     yaxis3_title = "MACD Value",   
-    yaxis4_title = "OBV",                  
-    xaxis4_title = "Time",
+    yaxis4_title = "MACD Diff",                    
+    yaxis5_title = "OBV",                  
+    xaxis5_title = "Time",
     xaxis1_rangeslider_visible = False,
     )
    
     return fig,fig2
+
       
 
 
